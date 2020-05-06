@@ -1,0 +1,126 @@
+---
+layout: default
+---
+
+{%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+{%- endif -%}
+
+{{ content }}
+
+{% assign collections_br = "experiência, educação, voluntariado" | split: ', ' %}
+{% assign collections = "experience, education, volunteer" | split: ', ' %}
+
+<ul class="posts">
+
+<li class="mt-55">
+  {% assign intro = site.extra | where: "name", "intro" | first %}
+  
+  <div>
+    <div style="text-align: right; float: right">
+      {% if page.name == 'pt-br.md' %}
+        <a href="/" style="text-decoration: underline;cursor: pointer;">
+          <img src='{{ "/assets/imgs/USA-Flag-icon.png" | relative_url }}'>
+        </a>
+      {% else %}
+        <a href="/pt-br" style="text-decoration: underline;cursor: pointer;">
+          <img src='{{ "/assets/imgs/BR-Brazil-Flag-icon.png" | relative_url }}'>  
+        </a>
+      {% endif %}
+    </div>
+    <div style="text-align: left; float: left">
+      <a onclick="createPDF()" style="text-decoration: underline;cursor: pointer;">
+      {% if page.name == 'pt-br.md' %}
+      Baixar CV
+      {% else %}
+      Download Resume
+      {% endif %}
+      </a>
+    </div>
+  </div>
+
+  <h1 id="author" class="mt-25" style="clear: both">{{ intro.author }}</h1>
+
+  {% if page.name == 'pt-br.md' %}
+    <h3 style="margin: 0; color: #555">{{ intro.address_br }}</h3>
+    <p id="intro">{{ intro.body_br }}</p>
+  {% else %}
+    <h3 style="margin: 0; color: #555">{{ intro.address }}</h3>
+    <p id="intro">{{ intro.body }}</p>
+  {% endif %}
+</li>
+
+{% for collection in (0 .. collections.size) %}
+    {% if collection == collections.size %}{% break %}{% endif %}
+    {% assign collections_list = collections[collection] %}
+    {%- if site[collections_list].size > 0 -%}
+      <li class="mt-4">
+        <h1 id="posts-label">{% if page.name == 'pt-br.md' %}{{ collections_br[collection] }}{% else %}{{ collections[collection] }}{% endif %}</h1>
+      </li>
+      {% assign collection_sorted = site[collections_list] | sort:"end_at" %}
+      {%- for post in collection_sorted reversed -%}
+        <li>
+          {% assign collection_name = collections[collection] %}
+          {% include posts.html post=post collection=collection_name %}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+{% endfor %}
+
+<li class="mt-3">
+  {% assign skills = site.extra | where: 'name', 'skills' | first %}
+  {% if page.name == 'pt-br.md' %}
+    <h2>{{ skills.title_br }}</h2>
+  {% else %}
+    <h2>{{ skills.title }}</h2>
+  {% endif%}
+  
+  {% if skills.frontend %}
+    {% include skills.html title="Frontend" skills=skills.frontend %}
+  {% endif %}
+  
+  {% if skills.backend %}
+    {% include skills.html title="Backend" skills=skills.backend %}
+  {% endif %}
+  
+  {% if skills.databases %}
+    {% if page.name == 'pt-br.md' %}
+      {% include skills.html title="Bancos de dados" skills=skills.databases %}
+    {% else %}
+      {% include skills.html title="Databases" skills=skills.databases %}
+    {% endif %}
+  {% endif %}
+
+  {% if skills.sos %}
+    {% include skills.html title="SOs" skills=skills.sos %}
+  {% endif %}
+
+  <div class="post">
+    <h3 style="margin-bottom: 0.5rem;">Language:</h3>
+    <div class="post-meta">
+      <ul class="">
+      {%- for skill in skills.languages -%}
+        <li>{{ skill }}</li>
+      {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+</li>
+
+<li class="mt-3">
+  {% assign interests = site.extra | where: 'name', 'interests' | first %}
+  {% if page.name == 'pt-br.md' %}
+    <h3>{{ interests.title_br }}</h3>
+  {% else %}
+    <h3>{{ interests.title }}</h3>
+  {% endif%}
+  
+  {% if page.name == 'pt-br.md' %}
+    {{ interests.body_br }}
+  {% else %}
+    {{ interests.body }}
+  {% endif %}
+</li>
+
+</ul>

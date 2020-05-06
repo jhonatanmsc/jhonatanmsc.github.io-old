@@ -1,0 +1,60 @@
+{%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
+
+{% if page.name == 'pt-br.md' %}
+  {% assign title = post.title_br %}
+  {% assign body = post.body_br %}
+  {% assign current = 'Atualmente' %}
+{% else %}
+  {% assign title = post.title %}
+  {% assign body = post.body %}
+  {% assign current = 'Present' %}
+{% endif %}
+
+<h2 class="post-title medium-font">{{ title | escape }}{% if include.collection == 'education' %} — {{ post.institute }} {% endif %}</h2>
+
+<div class="post-meta medium-font">
+    {% if include.collection != 'education' %}
+    <h3 style="margin: 0; color: #555">{{ post.institute }}</h3>
+    {% endif %}
+    <div class="post-date" style="display: inline-block">
+        <input class="start-at" type="hidden" value="{{ post.start_at }}">
+        <input class="end-at" type="hidden" value="{{ post.end_at }}">
+        <i class="icon-calendar"></i>
+        {% assign start_date=post.start_at | date: date_format %}
+        {% if page.name == 'pt-br.md' %}
+            {% include traduz-data.html date=start_date %}
+        {% else %}
+            {{ start_date }}
+        {% endif %}
+        &nbsp-&nbsp
+        {% assign end_date=post.end_at | date: date_format | default: current %}
+        {% if page.name == 'pt-br.md' %}
+            {% include traduz-data.html date=end_date %}
+        {% else %}
+            {{ end_date }}
+        {% endif %}
+        {% if include.collection != 'education' %}
+        &nbsp•&nbsp
+        <p style="display: inline"> 0 year </p>
+        {% endif %}
+    </div>
+    
+</div>
+
+{% if include.collection != 'education' %}
+<div class="post-meta medium-font" style="margin-top: 1rem">
+    {% if post.categories.size > 0 %}
+        <ul class="post-categories">    
+        {%- for tag in post.categories -%}
+            <li>{{ tag }}</li>
+        {%- endfor -%}
+        </ul>
+    {% endif %}
+</div>
+{% endif %}
+
+<div class="post medium-font" style="margin-top: 1rem">
+    
+    {{ body }}
+
+</div>

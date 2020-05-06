@@ -1,0 +1,70 @@
+title: Jhonatan Costa | profissional
+author: jhonatanmsc
+email: jhonmscosta@gmail.com
+description: > # this means to ignore newlines until "show_exerpts:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+show_excerpts: true # set to true to show excerpts on the homepage
+
+# deployment
+host: 0.0.0.0
+port: 4000
+
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+sass:
+  sass_dir: _sass
+
+collections_dir: posts
+
+collections:
+  - experience
+  - education
+  - volunteer 
+  - extra
+
+plainwhite:
+  name: Jhonatan Costa
+  tagline: Backend Developer
+  date_format: "%b %Y"
+  sitemap: true # set to true to generate sitemap.xml content
+
+  # generate social links in footer
+  social_links:
+    # twitter: jhonata78605249
+    github:  jhonatanmsc
+    linkedIn: in/jhonatanmsc
+    medium: jhonmscosta
+    rss: rss
+    # dribbble: jekyll
+    # facebook: jekyll
+    # flickr:   jekyll
+    # instagram: jekyll
+    # linkedin: jekyll
+    # pinterest: jekyll
+    # youtube: jekyll
+    # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
+    # youtube_channel_name: CloudCannon
+    # telegram: jhonatanmsc
+    # googleplus: +jekyll
+    # microdotblog: jekyll
+
+    # Mastodon instances
+    # mastodon:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+header_pages:
+- pt-br.md
+
+# Build settings
+# theme: plainwhite
+
+plugins:
+  - jekyll-seo-tag
+#  - jekyll-feed
