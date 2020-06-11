@@ -12,5 +12,5 @@ categories:
 body: |
     I am worked remote as backend (Django) developer, maintaining and implementing new features of automation systems for law firms.
 body_br: |
-    Trabalhei de homeoffice como backend (Django), fazendo manutensão e implementação de novos recursos em sistemas de automação para escritórios de advocacia
+    Trabalhei de homeoffice como backend (Django), fazendo manutenção e implementação de novos recursos em sistemas de automação para escritórios de advocacia
 ---
