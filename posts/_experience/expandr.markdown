@@ -13,5 +13,5 @@ categories:
 body: |
     I am worked as backend (Zend Framework 3) developer, maintaining and implementing new features in a student engagement system in universities.
 body_br: |
-    Trabalhei como backend (Zend Framework 3), fazendo manutensão e implementação de novos recursos em um sistema de engajamento de estudantes em escolas de ensino superior
+    Trabalhei como backend (Zend Framework 3), fazendo manutenção e implementação de novos recursos em um sistema de engajamento de estudantes em escolas de ensino superior
 ---
