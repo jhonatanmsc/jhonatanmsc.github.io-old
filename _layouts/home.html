@@ -39,17 +39,28 @@ layout: default
     </div>
   </div>
 
+  
   <h1 id="author" class="mt-25" style="clear: both">{{ intro.author }}</h1>
+  <script>
+    author = '{{ intro.author }}';
+  </script>
 
   {% if page.name == 'pt-br.md' %}
     <h3 style="margin: 0; color: #555">{{ intro.address_br }}</h3>
     <p id="intro">{{ intro.body_br }}</p>
+    <script>
+      address = '{{ intro.body_br }}';
+    </script>
   {% else %}
     <h3 style="margin: 0; color: #555">{{ intro.address }}</h3>
     <p id="intro">{{ intro.body }}</p>
+    <script>
+      address = '{{ intro.body }}';
+    </script>
   {% endif %}
 </li>
 
+<!-- posts (experience, education, volunteer) -->
 {% for collection in (0 .. collections.size) %}
     {% if collection == collections.size %}{% break %}{% endif %}
     {% assign collections_list = collections[collection] %}
@@ -57,6 +68,9 @@ layout: default
       <li class="mt-4">
         <h1 id="posts-label">{% if page.name == 'pt-br.md' %}{{ collections_br[collection] }}{% else %}{{ collections[collection] }}{% endif %}</h1>
       </li>
+      {% if page.name == 'pt-br.mb' %}
+        
+      {% endif %}
       {% assign collection_sorted = site[collections_list] | sort:"end_at" %}
       {%- for post in collection_sorted reversed -%}
         <li>
@@ -67,6 +81,7 @@ layout: default
     {%- endif -%}
 {% endfor %}
 
+<!-- skills -->
 <li class="mt-3">
   {% assign skills = site.extra | where: 'name', 'skills' | first %}
   {% if page.name == 'pt-br.md' %}
@@ -108,6 +123,7 @@ layout: default
 
 </li>
 
+<!-- interests -->
 <li class="mt-3">
   {% assign interests = site.extra | where: 'name', 'interests' | first %}
   {% if page.name == 'pt-br.md' %}

@@ -12,17 +12,17 @@
         this.startLine = 20;
         this.currentLine = 20;
         this.endLine = 270;
+        this.lineLimit = 83;
 
         // style
         this.doc = new jsPDF();
-        
         this.doc.addFont('/assets/font/medium.ttf', 'medium', 'normal');
         this.doc.setFont('medium');
 
     }
 
-    _newLine(lenght=7) {
-        this.currentLine += lenght; // 7 is the default height of my lines
+    _newLine(length=7) {
+        this.currentLine += length; // 7 is the default height of my lines
 
         return this.currentLine;
     }
@@ -37,14 +37,30 @@
         return true;
     }
 
-    addParagraph(text, style='normal', size=12, scape=true, scapeHeight=7) {
+    addText(text, style='normal', size=12, scape=true, scapeHeight=7) {
         this.doc.setFontType(style);
         this.doc.setFontSize(size);
-        this.doc.text(this.startLine, this.currentLine, text);
+
+        let splitedText = text.split(' ');
+        let arrayText = [];
+        let cont = 0;
+        for (let p of splitedText) {
+            cont += p.length;
+            if (cont < this.lineLimit) {
+                arrayText.push(p);
+            } else {
+                cont = 0;
+                this.doc.text(this.startLine, this.currentLine, arrayText.join(' '));
+                arrayText = [];
+                this._newLine();
+            }
+        }
+        this.doc.text(this.startLine, this.currentLine, arrayText.join(' '));
+
         if (scape)
             this._newLine(scapeHeight);
 
-        return 'text';
+        return text;
     }
 
     addSeparator(color=[158, 158, 158]) {
@@ -53,6 +69,12 @@
         this._newLine(10);
 
         return true;
+    }
+
+    addList(textList) {
+        for (let text of textList) {
+            this.addText(' \u2022 ' + text);
+        }
     }
 
     save() {
