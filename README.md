@@ -11,14 +11,14 @@ Graduado em Análise e Desenvolvimento de sistemas no IFPI, Sou Desenvolvedor Ba
 #### PHP Developer (Estágio) — Expandr
 _de 08/2020 até 12/2019_
 
-Trabalhei realizando manutensão e implementando de novos recursos em um sistema de engajamento de estudantes em escolas de ensino superior.
+Trabalhei realizando manutenção e implementando de novos recursos em um sistema de engajamento de estudantes em escolas de ensino superior.
 
 tecnologias com que trabalhei: Zend Framework 3, selenium, Rest Api, Doctrine e MySql.
 
 #### Consultoria de software (Remoto) — Retake
 _de 04/2019 até 05/2019_
 
-Trabalhei de homeoffice, fazendo manutensão e implementação de novos recursos em sistemas de automação para escritórios de advocacia.
+Trabalhei de homeoffice, fazendo manutenção e implementação de novos recursos em sistemas de automação para escritórios de advocacia.
 
 tecnologias com que trabalhei: Django, Selenium, Web Crawlers, Postgres.
 
